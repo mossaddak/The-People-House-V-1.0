@@ -9,4 +9,7 @@ urlpatterns = [
 
     #password recovery
     path('api/recovery-account/', include("recovery_account.urls")),
+
+    #contact
+    path('api/contact/', include("contact.urls")),
 ]

@@ -12,7 +12,7 @@ from rest_framework import status
 
 def send_otp_via_email(email):
     
-    otp = random.randint(1,999999)
+    otp = random.randint(1,9999999999)
     mydict = {
         'otp':f"{otp}"
     }

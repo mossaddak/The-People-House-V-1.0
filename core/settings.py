@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'account', #custom
     'recovery_account', #custom
+    'contact', #custom
     
 ]
 

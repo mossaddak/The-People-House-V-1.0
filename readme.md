@@ -1,7 +1,7 @@
 # Sing up
 post => http://127.0.0.1:8000/api/account/sing-up/
 
-required field: 
+required fields: 
 
     {
         "email":"ne33@gmail.com",
@@ -59,7 +59,7 @@ required fields:
 
     post => http://127.0.0.1:8000/api/account/verify/
 
-    required field:
+    required fields:
 
         {
             "otp":"12279"
@@ -70,7 +70,7 @@ required fields:
 # Reset Password Generate Token
 post => http://127.0.0.1:8000/api/recovery-account/reset-password/
 
-required field:
+required fields:
     {
         "email":"demomail1@gmail.com"
     }
@@ -78,13 +78,26 @@ required field:
 # Reset password
 post => http://127.0.0.1:8000/api/recovery-account/reset-password-send-token/
 
-required field:
+required fields:
 
     {
         "password_reset_token":<here will be the token send by email>,
         "new_password":12345
     }
 
+
+
+# Contact 
+post => http://127.0.0.1:8000/api/contact/contact/
+
+required fields:
+
+    {
+        "name": "Mossaddak",
+        "email": "mossaddak@gmail.com",
+        "subject": "Something",
+        "message": "oke"
+    }
 
 
 

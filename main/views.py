@@ -12,6 +12,9 @@ from .models import(
 )
 from datetime import datetime
 import calendar
+from .request_invite import (
+    request_invite
+)
 
 
 # Create your views here.
@@ -63,6 +66,7 @@ class InvitationView(APIView):
     def post(self, request):
         data = request.data
         serializer = InvitationSerializer(data=data)
+        email = request.data.get('email')
         if not serializer.is_valid():
             return Response(
                 {
@@ -72,9 +76,11 @@ class InvitationView(APIView):
             )
         else:
             serializer.save()
+
+            request_invite(email)
             return Response(
                 {
                     'data':serializer.data,
                     'message':"Thank you for your request"
                 }
-            )
+            ) 

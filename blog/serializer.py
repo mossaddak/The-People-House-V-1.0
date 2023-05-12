@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 from .models import (
-    NewsLetter
+    Blog
 )
 
-class NewsLetterSerializer(ModelSerializer):
+class BlogSerializer(ModelSerializer):
     class Meta:
-        model = NewsLetter
+        model = Blog
         fields = ("__all__")

@@ -111,6 +111,9 @@ required fields:
 get => http://127.0.0.1:8000/api/main/election-start/
 
 
+# Blogs
+get => http://127.0.0.1:8000/api/blog/blogs/
+
 # How to create app password?
 =)
     go to this link: https://myaccount.google.com/?hl=en_GB&utm_source=OGB&utm_medium=act

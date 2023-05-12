@@ -128,7 +128,7 @@ required fields:
         "blog": 1
     }
 
-put,patch,get => http://127.0.0.1:8000/api/blog/comment/<id>
+put,patch,get => http://127.0.0.1:8000/api/blog/comment/1/
 
 Note: User need to authenticate
 

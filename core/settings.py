@@ -196,3 +196,4 @@ EMAIL_USE_TLS = True#oke
 #oke
 
 
+TIME_ZONE = 'Asia/Dhaka'

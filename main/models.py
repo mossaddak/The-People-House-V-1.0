@@ -6,3 +6,10 @@ class NewsLetter(models.Model):
 
     def __str__(self):
         return f"{self.pk}.{self.email}"
+    
+
+class ElectionStart(models.Model):
+    date = models.DateTimeField(blank=False, null=True)
+
+    def __str__(self):
+        return f"{self.pk}.{self.date}"

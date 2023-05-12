@@ -3,10 +3,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializer import(
-    NewsLetterSerializer
+    NewsLetterSerializer,
+    InvitationSerializer
 )
 from .models import(
-     ElectionStart
+     ElectionStart,
+     Invitation
 )
 from datetime import datetime
 import calendar
@@ -52,4 +54,27 @@ class ElectionStartView(APIView):
             # 'second': datetime_obj.second
 
         }
-        return Response(response) 
+        return Response(response)
+    
+
+
+class InvitationView(APIView):
+    
+    def post(self, request):
+        data = request.data
+        serializer = InvitationSerializer(data=data)
+        if not serializer.is_valid():
+            return Response(
+                {
+                    'message':"something Went Wrong",
+                    'data':serializer.errors
+                },status = status.HTTP_400_BAD_REQUEST
+            )
+        else:
+            serializer.save()
+            return Response(
+                {
+                    'data':serializer.data,
+                    'message':"Thank you for your request"
+                }
+            )

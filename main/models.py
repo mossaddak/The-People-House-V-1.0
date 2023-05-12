@@ -13,3 +13,13 @@ class ElectionStart(models.Model):
 
     def __str__(self):
         return f"{self.pk}.{self.date}"
+    
+
+class Invitation(models.Model):
+    name = models.CharField(max_length=250, null=True, blank=False)
+    email = models.CharField(max_length=250, null=True, blank=False)
+    state = models.CharField(max_length=250, null=True, blank=False)
+    phone = models.CharField(max_length=20, blank=True, null=False)
+
+    def __str__(self):
+        return f"{self.pk}.{self.name}"

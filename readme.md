@@ -114,6 +114,20 @@ get => http://127.0.0.1:8000/api/main/election-start/
 # Blogs
 get => http://127.0.0.1:8000/api/blog/blogs/
 
+
+# Invitation
+post => http://127.0.0.1:8000/api/blog/blogs/
+
+required fields:
+
+    {
+        "name": "Mossaddak",
+        "email": "10000mossaddak@gmail.com",
+        "state": "Dhaka",
+        "phone": "45464564"
+    }
+
+
 # How to create app password?
 =)
     go to this link: https://myaccount.google.com/?hl=en_GB&utm_source=OGB&utm_medium=act
@@ -121,6 +135,4 @@ get => http://127.0.0.1:8000/api/blog/blogs/
     then,
 
         security > 2 step verification > sing into your account > App passwords(it will get in bottom) > select app(other) > give a name > click generate
-
-
 

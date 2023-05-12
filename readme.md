@@ -115,6 +115,24 @@ get => http://127.0.0.1:8000/api/main/election-start/
 get => http://127.0.0.1:8000/api/blog/blogs/
 
 
+# Blog Comment
+
+<b><i>For All Comment</i></b>
+get, post => http://127.0.0.1:8000/api/blog/comment/
+
+required fields:
+
+{
+    "comment": "new1",
+    "blog": 1
+}
+
+put,patch,get => http://127.0.0.1:8000/api/blog/comment/<id>
+
+Note: User need to authenticate
+
+
+
 # Invitation
 post => http://127.0.0.1:8000/api/blog/blogs/
 

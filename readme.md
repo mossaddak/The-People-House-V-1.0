@@ -44,8 +44,6 @@ required fields:
     }
 
 
-
-
 # Account Verification
 -)First:
 
@@ -66,7 +64,6 @@ required fields:
         }
 
 
-
 # Reset Password Generate Token
 post => http://127.0.0.1:8000/api/recovery-account/reset-password/
 
@@ -74,6 +71,7 @@ required fields:
     {
         "email":"demomail1@gmail.com"
     }
+
 
 # Reset password
 post => http://127.0.0.1:8000/api/recovery-account/reset-password-send-token/
@@ -84,7 +82,6 @@ required fields:
         "password_reset_token":<here will be the token send by email>,
         "new_password":12345
     }
-
 
 
 # Contact 
@@ -98,7 +95,6 @@ required fields:
         "subject": "Something",
         "message": "oke"
     }
-
 
 
 # How to create app password?

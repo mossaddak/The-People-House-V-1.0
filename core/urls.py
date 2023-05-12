@@ -12,4 +12,7 @@ urlpatterns = [
 
     #contact
     path('api/contact/', include("contact.urls")),
+
+    #main
+    path('api/main/', include("main.urls"))
 ]

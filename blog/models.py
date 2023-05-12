@@ -1,4 +1,7 @@
 from django.db import models
+from account.models import (
+    User
+)
 
 # Create your models here.
 class Blog(models.Model):
@@ -10,4 +13,13 @@ class Blog(models.Model):
 
     def __str__(self):
         return f"{self.pk}.{self.blog_title}"
+    
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, related_name="mycomments", on_delete=models.CASCADE, null=True, blank=False)
+    comment = models.TextField(blank=False, null=True)
+    blog = models.ForeignKey(Blog, related_name="comments", on_delete=models.CASCADE, null=True, blank=False)
+
+    def __str__(self):
+        return f"{self.pk}.{self.comment}"
 

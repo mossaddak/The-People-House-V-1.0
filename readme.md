@@ -11,12 +11,12 @@ required fields:
         "subscription_type":"<Here will be subscription type>"
     }
 
-    <b>Note:</b> 
-        <p>
-            if subscription type != "Liberty plan" then no token will be added,
-            else will be added new field named "token" after "subscription_type" field
-            
-        </p>
+<b>Note:</b> 
+<p>
+    if subscription type != "Liberty plan" then no token will be added,
+    else will be added new field named "token" after "subscription_type" field
+    
+</p>
 
     There is four subscription types:
         #Liberty plan
@@ -25,7 +25,7 @@ required fields:
         #Stars and Stripes plan
         #Founding Fathers plan
     
-    <b>Note:</b> You can't change these, you have to keep these as it is and under a dropdown menu so that user can select subscription type as they want.
+<b>Note:</b> You can't change these, you have to keep these as it is and under a dropdown menu so that user can select subscription type as they want.
 
 
 

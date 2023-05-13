@@ -13,7 +13,7 @@ required fields:
 
 <b>Note:</b> 
 <p>
-    if subscription type != "Liberty plan" then no token will be added,
+    if subscription type == "Liberty plan" then no token will be added,
     else will be added new field named "token" after "subscription_type" field. Here token means card number. Without payment no user will be able to get the entry permissions.
     
 </p>

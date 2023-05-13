@@ -130,7 +130,7 @@ required fields:
 
 put,patch,get => http://127.0.0.1:8000/api/blog/comment/1/
 
-Note: User need to authenticate
+Note: User needs to authenticate
 
 
 
@@ -144,6 +144,19 @@ required fields:
         "email": "10000mossaddak@gmail.com",
         "state": "Dhaka",
         "phone": "45464564"
+    }
+
+
+# Payment Method
+api_key = 
+
+post => http://127.0.0.1:8000/api/payment_method/stripe-payment/
+
+required field:
+
+    {
+        "amount": 34,
+        "token": "4242424242424242"
     }
 
 

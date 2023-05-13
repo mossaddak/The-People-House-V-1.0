@@ -43,6 +43,7 @@ class UserSerializer(ModelSerializer):
         model = User
         is_superuser = serializers.BooleanField(read_only=True)
         is_verified = serializers.BooleanField(read_only=True)
+        is_verified = serializers.BooleanField(read_only=True)
         fields = [
             'id',
             "username",
@@ -62,6 +63,8 @@ class UserSerializer(ModelSerializer):
             
             "is_superuser",
             "is_verified",
+
+            "is_subscribed",
         ]
 
 

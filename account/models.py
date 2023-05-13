@@ -18,7 +18,7 @@ class User(AbstractUser):
     num_of_national_election_voted = models.CharField(blank=True, null=True, max_length=250, verbose_name="Number of national elections voted in")
     num_of_state_election_voted = models.CharField(blank=True, null=True, max_length=250, verbose_name="Number of state elections voted in")
 
-
+    is_subscribed = models.BooleanField(default=False)
 
 
     USERNAME_FIELD='email'

@@ -20,5 +20,9 @@ urlpatterns = [
     path('api/main/', include("main.urls")),
 
     #blog
-    path('api/blog/', include("blog.urls"))
+    path('api/blog/', include("blog.urls")),
+
+    #payment
+    path('api/payment_method/', include("payment_method.urls")),
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

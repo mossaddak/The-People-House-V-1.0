@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'contact', #custom
     'main', #custom
     'blog', #custom
+    'payment_method', #custom
     
 ]
 

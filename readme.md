@@ -73,17 +73,18 @@ then you have to hit the below link with the otp you got through the email
 
     post => http://127.0.0.1:8000/api/account/verify/
 
-    required fields:
+required fields:
 
-        {
-            "otp":"12279"
-        }
+    {
+        "otp":"12279"
+    }
 
 
 # Reset Password Generate Token
 post => http://127.0.0.1:8000/api/recovery-account/reset-password/
 
 required fields:
+
     {
         "email":"demomail1@gmail.com"
     }

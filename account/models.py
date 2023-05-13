@@ -32,8 +32,7 @@ class User(AbstractUser):
     token = models.CharField(max_length=50, null=True, blank=True)
 
     is_subscribed = models.BooleanField(default=False)
-
-
+    
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=['first_name', 'last_name', 'username']
 

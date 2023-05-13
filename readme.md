@@ -69,7 +69,7 @@ need to hit this url, user must need loged in. there is no need any field. after
 
 -)Second:
 
-    then you have to hit the below link with the otp you got through the email 
+then you have to hit the below link with the otp you got through the email 
 
     post => http://127.0.0.1:8000/api/account/verify/
 

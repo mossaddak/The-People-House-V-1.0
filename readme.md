@@ -14,8 +14,7 @@ required fields:
 <b>Note:</b> 
 <p>
     if subscription type == "Liberty plan" then no token will be added,
-    else will be added new field named "token" after "subscription_type" field. Here token means card number. Without payment no user will be able to get the entry permissions.
-    
+    else will be added new field named "token" after "subscription_type" field. Here token means card number. Without payment no user will be able to get the entry permissions except "Liberty plan" subscriber.
 </p>
 
     There is four subscription types:
@@ -26,10 +25,6 @@ required fields:
         #Founding Fathers plan
     
 <b>Note:</b> You can't change these, you have to keep these as it is and under a dropdown menu so that user can select subscription type as they want.
-
-
-
-
 
 
 # Login
@@ -68,7 +63,7 @@ required fields:
 # Account Verification
 -)First:
 
-    need to hit this url, user must need loged in. there is no need any field. after hit this user will get an otp through the email:
+need to hit this url, user must need loged in. there is no need any field. after hit this user will get an otp through the email:
 
     post => http://127.0.0.1:8000/api/account/account-verify-code/
 

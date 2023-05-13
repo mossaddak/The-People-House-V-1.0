@@ -2,19 +2,15 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-
 from .models import(
     User
 )
-
-
 #serializer
 from .serializer import(
     UserSerializer,
     VeriFyAccountSerializer,
     LoginSerializer
 )
-
 #otp verification
 from .otp_send import send_otp_via_email
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -25,22 +21,31 @@ from rest_framework.permissions import (
 from rest_framework_simplejwt.authentication import (
     JWTAuthentication
 )
-
 from rest_framework.permissions import (
     BasePermission,
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
 )
-
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import (
     permissions
 )
 from rest_framework import parsers
-
-
-
 from django.http import HttpResponse
+
+from .payment import (
+    subscription
+)
+
+
+#stripe connection
+def stripe_connection(amount, token):
+    amount = int(amount)
+    user = User.objects.all().last()
+    #subscription(amount, user, token)
+    user.token = token
+    user.subscription_fee = amount
+    user.save()
 
 
 # Create your views here.
@@ -57,7 +62,39 @@ class SingUp(APIView):
                     },status = status.HTTP_400_BAD_REQUEST
                 )
             if serializer.is_valid():
-                serializer.save()
+
+                #subscription
+                subscription_type = request.data.get('subscription_type')
+
+                if subscription_type == "Liberty plan":
+                    serializer.save()
+
+                elif subscription_type == "Patriot plan":
+                    token = request.data.get('token')
+                    subscription_type = "Patriot plan"
+                    serializer.save()
+                    amount = 1
+                    stripe_connection(amount, token)
+
+                elif subscription_type == "Eagle plan":
+                    token = request.data.get('token')
+                    serializer.save()
+                    amount = 8
+                    stripe_connection(amount, token)
+                
+                elif subscription_type == "Stars and Stripes plan":
+                    token = request.data.get('token')
+                    serializer.save()
+                    amount = 15
+                    stripe_connection(amount, token)
+
+                elif subscription_type == "Founding Fathers plan":
+                    token = request.data.get('token')
+                    serializer.save()
+                    amount = 20
+                    stripe_connection(amount, token)
+
+                
                 user = User.objects.all().last()
                 refresh = RefreshToken.for_user(user)
                 serializer = UserSerializer(user).data
@@ -76,8 +113,7 @@ class SingUp(APIView):
                     {
                         'message':"something Went Wrong",
                         'message':serializer.errors,
-                    },status = status.HTTP_400_BAD_REQUEST
-                    
+                    },status = status.HTTP_400_BAD_REQUEST  
                 )
         
 class VerifyOTPview(APIView):
@@ -85,21 +121,16 @@ class VerifyOTPview(APIView):
         try:
             data = request.data
             serializer = VeriFyAccountSerializer(data=data)
-            
             if serializer.is_valid():
                 otp = serializer.data['otp']
                 user = User.objects.filter(otp=otp)
-
-                # if user.filter(verified=False).exists():
-                #print("OTPUser=====================================>", user)
                 if not user.exists():
                     return Response(
                         {
-                            'message':"You didn't create account yet, please create an account",
+                            'message':"Invalid OTP",
                             'error':"User not found"
                         },status = status.HTTP_404_NOT_FOUND
                     )
-                print("OTPUser=====================================>", user)
                 if not user[0].otp == otp:
                     return Response(
                         {
@@ -109,11 +140,9 @@ class VerifyOTPview(APIView):
                     )
                 user = user[0]
                 if user.is_verified == False:
-                
                     user.is_verified = True
                     user.otp=""
                     user.save()
-
                     #print("OTPemail=====================================",user[0].verified)
                     refresh = RefreshToken.for_user(user)
                     return Response(
@@ -151,18 +180,17 @@ class LoginView(APIView):
 
         except Exception as e:
             return Response(
-                    {
-                        'data':{},
-                        'message':"something Went Wrong"
-                    },status = status.HTTP_400_BAD_REQUEST
-                )
+                {
+                    'data':{},
+                    'message':"something Went Wrong"
+                },status = status.HTTP_400_BAD_REQUEST
+            )
         
 #profile ================================================================>
 class ProfileView(APIView): 
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     
-
     def get(self, request):
         users = User.objects.all()
         user = request.user

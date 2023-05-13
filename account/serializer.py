@@ -39,6 +39,7 @@ def auto_user(set_email):
 
 class UserSerializer(ModelSerializer):
     username = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = User
         is_superuser = serializers.BooleanField(read_only=True)
@@ -63,8 +64,12 @@ class UserSerializer(ModelSerializer):
             
             "is_superuser",
             "is_verified",
+            
 
             "is_subscribed",
+            "subscription_type",
+            "subscription_fee", #new
+            "token"
         ]
 
 
@@ -92,6 +97,7 @@ class UserSerializer(ModelSerializer):
             first_name=validate_data["first_name"],
             last_name=validate_data["last_name"],
             password=validate_data["password"],
+            subscription_type=validate_data["subscription_type"],
             email=email
         )
         user.set_password(validate_data["password"])

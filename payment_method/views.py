@@ -39,9 +39,10 @@ class StripePaymentView(APIView):
             user.is_subscribed = True
             user.save()
 
-
             # Create a charge on Stripe
             amount = request.data['amount']
+            print("Tokent===================================================>", request.data['token'])
+            
             charge = stripe.Charge.create(
                 amount=int(amount * 100),
                 currency='usd',

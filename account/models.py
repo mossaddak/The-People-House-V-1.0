@@ -18,6 +18,19 @@ class User(AbstractUser):
     num_of_national_election_voted = models.CharField(blank=True, null=True, max_length=250, verbose_name="Number of national elections voted in")
     num_of_state_election_voted = models.CharField(blank=True, null=True, max_length=250, verbose_name="Number of state elections voted in")
 
+    ORDER_STATUS_CHOICES = [
+        ('Liberty plan', 'Liberty plan'),
+        ('Patriot plan', 'Patriot plan'),
+        ('Eagle plan', 'Eagle plan'),
+        ('Stars and Stripes plan', 'Stars and Stripes plan'),
+        ('Founding Fathers plan', 'Founding Fathers plan')
+        
+    ]
+    subscription_type = models.CharField(max_length=30, choices=ORDER_STATUS_CHOICES, blank=True, null=True)
+    subscription_fee = models.CharField(max_length=50, null=True, blank=True)
+
+    token = models.CharField(max_length=50, null=True, blank=True)
+
     is_subscribed = models.BooleanField(default=False)
 
 
